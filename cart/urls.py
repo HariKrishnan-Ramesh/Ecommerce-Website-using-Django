@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
-from store import views
+from . import views
 app_name='cart'
 
 urlpatterns = [
@@ -24,6 +24,5 @@ urlpatterns = [
    path('add/',views.cart_add,name='cart_add'),
    path('delete/',views.cart_delete,name='cart_delete'),
    path('update/',views.cart_update,name='cart_update'),
-   
 
 ]
