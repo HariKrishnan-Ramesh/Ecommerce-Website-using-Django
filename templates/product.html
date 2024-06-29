@@ -29,11 +29,12 @@
 
               {% else %}
                 ₹{{ product.price }}
-                <br>ID: {{ product.id }}
+            
               {% endif %}
               <br><br>
               <a href="{% url 'store:home' %}" class="btn btn-secondary">Home</a>
-              <button  type="button" value="" class="btn btn-secondary" id="add-cart" >Add To Cart</button>
+
+              <button  type="button" value="{{ product.id }}" class="btn btn-secondary" id="add-cart" >Add To Cart</button>
             </center>
             </div>
           </div>
@@ -43,23 +44,24 @@
 </div>
 <script>
 //check button pressed
-$(document).on('click' , '#add-cart' , function(e){
+$(document).on('click', '#add-cart', function(e){
   e.preventDefault();
   $.ajax({
     type:'POST',
     url: '{% url "cart:cart_add" %}',
     data:{
-      product_id: $('#add_cart').val(),
+      product_id: $('#add-cart').val(),
       csrfmiddlewaretoken : '{{ csrf_token }}' ,
       action : 'post'
     },
 
     success: function(json){
-      console.log(json)
+      //console.log(json)
+      document.getElementById("cart_quantity").textContent = json.qty
     },
 
     error: function(xhr, errmsg , err){
-      console.error(`Error: ${errmsg}`);
+     
     }
 
   });

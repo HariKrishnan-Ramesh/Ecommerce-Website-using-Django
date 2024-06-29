@@ -1,11 +1,15 @@
 from django.shortcuts import render , get_object_or_404
 from .cart import Cart
 from store.models import Product
-from django.http import JsonResponse
+from django.http import JsonResponse , HttpResponseBadRequest
 
 # Create your views here.
+
+
 def cart_summary(request):
     return render(request, "cart_summary.html" , {})
+
+    
 
 def cart_add(request):
     #Get the cart
@@ -21,8 +25,10 @@ def cart_add(request):
         #Save to session
         cart.add(product=product)
 
+
+        cart_quantity = cart.__len__()
         #Return Response
-        response = JsonResponse({'Product Name: ': product.name})
+        response = JsonResponse({'qty': cart_quantity})
         return response
 
 

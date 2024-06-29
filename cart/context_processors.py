@@ -1,5 +1,5 @@
 from .cart import Cart
 
-#Create context processors sp our can work on all pages
+#Create context processors so our cart can work on all pages
 def cart(request):
-    return {'cart':Cart(request)}
+    return {'cart': Cart(request)}
