@@ -1,12 +1,37 @@
-from django.shortcuts import render , redirect
-from .models import Product , Category
-from django.contrib.auth import authenticate,login,logout
+from django.shortcuts import render, redirect
+from .models import Product, Category, Profile
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .forms import SignUpForm
+from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm, UserInfoForm
+
+from payment.forms import ShippingForm
+from payment.models import ShippingAddress
+
+from django import forms
+from django.db.models import Q
+import json
+from cart.cart import Cart
 
 # Create your views here.
+
+def update_info(request):
+    if request.user.is_authenticated:
+        current_user = User.objects.get(id=request.user.id)
+        form = UpdateUserForm(request.POST or None ,instance = current_user)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your Info has been updated")
+            return redirect('home')
+        return render(request , "update_info.html" ,{'form' :form})
+    else:
+        messages.success(request, "You must be Logged in to access thar Page!!")
+        return redirect("home")
+    
+
+
 
 def category(request,foo):
     #Replace Hyphens with Spaces
