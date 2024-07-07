@@ -11,15 +11,6 @@
                 {% if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'store:logout' %}">Logout</a></li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!-- <li><a class="dropdown-item" href="{% url 'store:category' 'Motivating-Books' %}">Motivating Books</a></li>
-                        <li><a class="dropdown-item" href="{% url 'store:category' 'Marketing-Books' %}">Marketing Books</a></li>
-                        <li><a class="dropdown-item" href="{% url 'store:category' 'Home-Products' %}">Home Products</a></li> -->
-                        <li><a class="dropdown-item" href="{% url 'payment:payment' %}">Payment</a></li>
-                    </ul>
-                </li>
 
 
                 {% else %}

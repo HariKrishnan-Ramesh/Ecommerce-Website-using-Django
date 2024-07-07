@@ -4,8 +4,7 @@ from django import forms
 from payment.forms import PaymentForm
 
 # Create your views here.
-def payment_success(request):
-    return render(request, "payment/payment_success.html", {} )
+
 
 def payment_view(request):
     if request.method == 'POST':
@@ -15,7 +14,7 @@ def payment_view(request):
             return redirect('success')  # You need to create a success view and URL
     else:
         form = PaymentForm()
-    return render(request, 'payments/payment.html', {'form': form})
+    return render(request, 'payment/payment.html', {'form': form})
 
 def success_view(request):
-    return render(request, 'payments/success.html')
+    return render(request, 'payment/success.html')
