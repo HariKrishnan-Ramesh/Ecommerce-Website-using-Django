@@ -11,10 +11,10 @@ def payment_view(request):
         form = PaymentForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('success')  # You need to create a success view and URL
+            return render(request,"success.html")  # You need to create a success view and URL
     else:
         form = PaymentForm()
-    return render(request, 'payment/payment.html', {'form': form})
+    return render(request, 'payment.html', {'form': form})
 
 def success_view(request):
-    return render(request, 'payment/success.html')
+    return render(request, 'success.html')

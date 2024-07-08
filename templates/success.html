@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Success</title>
+    <style>
+        .inline-container{
+           margin-left: 100px;
+           display: inline-block;
+           vertical-align: top;
+        }
+        #iframe-container{
+            margin: 0;
+            border: 0;
+            overflow: hidden;
+            margin-left: 100px;
+        }
+      
+    </style>
+</head>
+<body>
+    <br><br><br><br>
+    <div class="inline-container" id="iframe-container" >
+    <iframe src="https://lottie.host/embed/325f796d-8903-4f47-afbf-28a1ebf4ba88/ZpgEl5eNBV.json"></iframe>
+    </div>
+    <div class="inline-container">
+    <h2>Payment Successful</h2>
+    <p>Thank you for your payment.</p>
+    </div>
+    <br><br><br><br><br>
+</body>
+</html>
+
+{% endblock %}

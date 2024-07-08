@@ -1,12 +1,14 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Payment</title>
-    <link rel="stylesheet" href="{% static 'payment/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
 </head>
 <body>
-    <h2>Payment Information</h2>
+    <center><h2>Payment Information</h2></center>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
