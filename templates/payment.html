@@ -1,5 +1,6 @@
+{% extends 'base.html' %}
 {% load static %}
-
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +9,15 @@
     <link rel="stylesheet" href="{% static 'css/style1.css' %}">
 </head>
 <body>
+    <br><br><br>
     <center><h2>Payment Information</h2></center>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Submit Payment</button>
     </form>
+    <br><br><br><br>
 </body>
 </html>
+
+{% endblock %}

@@ -110,7 +110,7 @@ def register_user(request):
             user = authenticate(request, username=username, password=password)
             login(request,user)
             messages.success(request,("You have Registered Successfully"))
-            return redirect('home')
+            return render(request,'home.html')
         else:
             messages.success(request,("Whoops! There was a error while Registering"))
             return render(request, 'register.html' , {})
