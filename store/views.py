@@ -117,4 +117,17 @@ def register_user(request):
     else:    
         return render(request,'register.html' , {'form':form})
     
+def search(request):
+    #Determine if they filled out
+    if request.method == "POST":
+        searched = request.POST["searched"]
+        #Query the products
+        searched = Product.objects.filter(name__icontains=searched)
 
+        if not searched:
+            messages.success(request,("Whoops! That product is not available..."))
+            return render(request,'search.html' , {})
+        else:
+            return render(request,'search.html' , {"searched":searched})
+    else:
+        return render(request,'search.html' , {})

@@ -31,10 +31,18 @@
                 </li>
             </ul>
 
-            <form class="d-flex" style="margin-right: 10px;">
+            <!-- <form method="POST" class="d-flex" style="margin-right: 10px;">
+                {% csrf_token %}
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> -->
+
+            <form class="d-flex" action="{% url 'store:search' %}" method="POST" style="margin-right: 10px;">
+                {% csrf_token %}
+                <input class="form-control me-2" type="search" name="searched" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+
 
             <form class="d-flex" style="margin-left: 10px;">
                 <a href="{% url 'cart:cart_summary' %}"  class="btn btn-outline-dark"><i class="bi-cart-fill me-1"></i>
