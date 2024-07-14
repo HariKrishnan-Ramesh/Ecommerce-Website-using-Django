@@ -107,7 +107,7 @@ def register_user(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             #login user
-            user = authenticate(request, username=username, password=password)
+            user = authenticate(username=username, password=password)
             login(request,user)
             messages.success(request,("You have Registered Successfully"))
             return render(request,'home.html')
